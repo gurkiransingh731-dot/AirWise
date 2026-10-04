@@ -320,5 +320,19 @@ function updateAIInsight(aqi) {
 
 }
 function toggleMenu() {
-    document.getElementById("mobileNav").classList.toggle("active");
+    const menu = document.getElementById("mobileNav");
+
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+        menu.style.flexDirection = "column";
+        menu.style.position = "absolute";
+        menu.style.top = "100%";
+        menu.style.left = "0";
+        menu.style.right = "0";
+        menu.style.background = "white";
+        menu.style.padding = "15px 7%";
+        menu.style.zIndex = "9999";
+    }
 }
