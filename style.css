@@ -597,37 +597,4 @@ footer p {
         position: relative;
     }
 
-    .menu-btn {
-        display: block;
-        color: #17201c;
-        padding: 5px;
-    }
-
-    header nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 15px 7%;
-        background: white;
-        border-top: 1px solid #e1e5e2;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        flex-direction: column;
-        gap: 0;
-        z-index: 1000;
-    }
-
-    header nav.active {
-        display: flex;
-    }
-
-    header nav a {
-        padding: 14px 0;
-        border-bottom: 1px solid #eef1ef;
-    }
-
-    header nav a:last-child {
-        border-bottom: none;
-    }
-}
+   
