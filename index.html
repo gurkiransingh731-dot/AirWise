@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AirWise | Digital Air Pollution Monitoring</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">AIRWISE</div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#pollutants">Pollutants</a>
+            <a href="#monitoring">How It Works</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <p class="tagline">DIGITAL AIR QUALITY MONITORING</p>
+
+                <h1>
+                    Know the air<br>
+                    <span>you breathe.</span>
+                </h1>
+
+                <p class="description">
+                    AirWise is a digital prototype that demonstrates
+                    how air-quality data can be monitored, analysed
+                    and communicated to the public.
+                </p>
+
+                <button onclick="scrollToDashboard()">
+                    Explore Air Quality
+                </button>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <p>CURRENT AIR QUALITY</p>
+
+                <div class="aqi-number" id="heroAQI">178</div>
+
+                <div class="aqi-status" id="heroStatus">
+                    MODERATELY POLLUTED
+                </div>
+
+                <p class="location">
+                    📍 Demonstration Location
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+
+           <div class="section-heading">
+
+               <p class="tagline">DIGITAL AIR MONITORING</p>
+
+               <h2>Air Quality Dashboard</h2>
+
+               <p>
+                   Environmental measurements can be processed digitally
+                   to create a clear picture of current air quality.
+               </p>
+
+               <div class="dashboard-meta">
+
+                 <div class="dashboard-meta">
+
+    <div>
+        <span>LOCATION</span>
+
+        <select id="citySelect" onchange="changeCity()">
+            <option value="demo">Demonstration Station</option>
+            <option value="delhi">New Delhi</option>
+            <option value="chandigarh">Chandigarh</option>
+            <option value="ludhiana">Ludhiana</option>
+            <option value="mumbai">Mumbai</option>
+        </select>
+    </div>
+
+    <div>
+        <span>STATUS</span>
+        <strong>Prototype Data</strong>
+    </div>
+
+    <div>
+        <span>UPDATE</span>
+        <strong id="updateTime">Just now</strong>
+    </div>
+
+                </div>
+               </div>
+
+           </div>
+
+
+            <div class="pollutant-grid">
+
+                <div class="pollutant-card">
+                    <p>PM2.5</p>
+                    <h3 id="pm25">92</h3>
+                    <span>µg/m³</span>
+                    <small>Fine particulate matter</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>PM10</p>
+                    <h3 id="pm10">141</h3>
+                    <span>µg/m³</span>
+                    <small>Coarse particulate matter</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>NO₂</p>
+                    <h3 id="no2">28</h3>
+                    <span>µg/m³</span>
+                    <small>Nitrogen dioxide</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <h3 id="so2">18</h3>
+                    <span>µg/m³</span>
+                    <small>Sulphur dioxide</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>O₃</p>
+                    <h3 id="o3">42</h3>
+                    <span>µg/m³</span>
+                    <small>Ground-level ozone</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>CO</p>
+                    <h3 id="co">0.8</h3>
+                    <span>mg/m³</span>
+                    <small>Carbon monoxide</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>NH₃</p>
+                    <h3 id="nh3">12</h3>
+                    <span>µg/m³</span>
+                    <small>Ammonia</small>
+                </div>
+
+                <div class="pollutant-card">
+                    <p>Pb</p>
+                    <h3 id="pb">0.3</h3>
+                    <span>µg/m³</span>
+                    <small>Lead</small>
+                </div>
+
+            </div>
+
+
+            <div class="monitor-card">
+
+                <div>
+                    <p class="tagline">AIR QUALITY INDEX</p>
+
+                    <h2 id="dashboardAQI">178</h2>
+
+                    <h3 id="dashboardStatus">
+                        MODERATELY POLLUTED
+                    </h3>
+
+                   <p id="dashboardMessage">
+                      AQI 178 falls in the Moderately Polluted category
+                      under India's National Air Quality Index.
+                   </p>
+
+                </div>
+
+                <div class="meter">
+                    <div class="meter-fill" id="meterFill"></div>
+                </div>
+                <div class="aqi-analysis">
+
+    <p class="tagline">DATA INTERPRETATION</p>
+
+    <h3>Why is the AQI elevated?</h3>
+
+    <p>
+        In this demonstration dataset, particulate matter is
+        the major factor contributing to the elevated air-quality
+        index.
+    </p>
+
+    <div class="analysis-points">
+
+        <div>
+            <strong>Primary concern</strong>
+            <span>PM2.5</span>
+        </div>
+
+        <div>
+            <strong>Current AQI</strong>
+            <span id="analysisAQI">178</span>
+        </div>
+
+        <div>
+            <strong>Category</strong>
+            <span id="analysisStatus">Moderately Polluted</span>
+        </div>
+
+    </div>
+
+              </div>
+            </div>
+             <div class="chart-card">
+
+    <div class="chart-header">
+
+        <div>
+            <p class="tagline">24-HOUR TREND</p>
+            <h2>Air Quality Over Time</h2>
+        </div>
+
+        <span class="chart-label">AQI</span>
+
+    </div>
+
+    <canvas id="aqiChart"></canvas>
+
+    <p class="chart-note">
+        Demonstration trend showing how digital systems can
+        visualize changes in air quality over time.
+    </p>
+
+       </div>
+        </section>
+
+
+        <!-- POLLUTANTS -->
+        <section id="pollutants" class="section dark-section">
+
+            <div class="section-heading">
+                <p class="tagline">UNDERSTAND THE DATA</p>
+                <h2>What are we monitoring?</h2>
+            </div>
+            <div class="info-grid">
+
+    <div class="info-card">
+        <div class="icon">PM</div>
+        <h3>PM2.5</h3>
+        <p>
+            Fine particles small enough to penetrate deep
+            into the respiratory system.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">PM</div>
+        <h3>PM10</h3>
+        <p>
+            Inhalable particles commonly associated with
+            dust, roads and construction activity.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">NO₂</div>
+        <h3>Nitrogen Dioxide</h3>
+        <p>
+            A combustion-related pollutant strongly associated
+            with vehicle and industrial emissions.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">SO₂</div>
+        <h3>Sulphur Dioxide</h3>
+        <p>
+            A gas mainly associated with the burning of
+            sulphur-containing fuels.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">O₃</div>
+        <h3>Ozone</h3>
+        <p>
+            A secondary pollutant formed through chemical
+            reactions involving other pollutants.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">CO</div>
+        <h3>Carbon Monoxide</h3>
+        <p>
+            A colourless gas produced mainly through
+            incomplete combustion.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">NH₃</div>
+        <h3>Ammonia</h3>
+        <p>
+            A reactive gas that can contribute to the
+            formation of fine particulate matter.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <div class="icon">Pb</div>
+        <h3>Lead</h3>
+        <p>
+            A toxic metal that can enter the atmosphere
+            through certain industrial processes.
+        </p>
+    </div>
+
+</div>
+
+           
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section id="monitoring" class="section">
+
+            <div class="section-heading">
+
+                <p class="tagline">DIGITAL TECHNOLOGY</p>
+
+                <h2>How does air monitoring work?</h2>
+
+                <p>
+                    Digital air-quality systems transform environmental
+                    measurements into information that people can understand.
+                </p>
+
+            </div>
+
+
+            <div class="process">
+
+                <div class="process-step">
+                    <span>01</span>
+                    <h3>Monitor</h3>
+                    <p>
+                        Sensors and monitoring stations collect
+                        information about pollutants.
+                    </p>
+                </div>
+
+                <div class="process-arrow">→</div>
+
+                <div class="process-step">
+                    <span>02</span>
+                    <h3>Process</h3>
+                    <p>
+                        Digital systems store and process
+                        environmental measurements.
+                    </p>
+                </div>
+
+                <div class="process-arrow">→</div>
+
+                <div class="process-step">
+                    <span>03</span>
+                    <h3>Analyse</h3>
+                    <p>
+                        Data can be converted into indexes,
+                        trends and understandable indicators.
+                    </p>
+                </div>
+
+                <div class="process-arrow">→</div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    <h3>Inform</h3>
+                    <p>
+                        Results can be communicated through
+                        websites, apps and public alerts.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOURCES -->
+        <section class="section source-section">
+
+            <div class="section-heading">
+
+                <p class="tagline">WHERE DOES POLLUTION COME FROM?</p>
+
+                <h2>Major sources</h2>
+
+            </div>
+
+
+            <div class="source-grid">
+
+                <div class="source-card">
+                    <div class="source-icon">🚗</div>
+                    <h3>Transport</h3>
+                    <p>
+                        Vehicle exhaust and fuel combustion
+                        contribute to urban air pollution.
+                    </p>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">🏭</div>
+                    <h3>Industry</h3>
+                    <p>
+                        Industrial processes can release
+                        particulate matter and gases.
+                    </p>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">🔥</div>
+                    <h3>Burning</h3>
+                    <p>
+                        Burning biomass and waste can release
+                        harmful particles and gases.
+                    </p>
+                </div>
+
+                <div class="source-card">
+                    <div class="source-icon">🌫️</div>
+                    <h3>Dust</h3>
+                    <p>
+                        Road, construction and other dust
+                        contribute to particulate pollution.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+         <section class="data-section">
+
+    <div>
+
+        <p class="tagline">DATA & METHODOLOGY</p>
+
+        <h2>Where does the information come from?</h2>
+
+        <p>
+            AirWise is designed around the workflow used by
+            digital air-quality monitoring systems. Environmental
+            measurements can be collected from monitoring stations,
+            processed digitally and presented through dashboards,
+            charts and alerts.
+        </p>
+
+    </div>
+
+    <div class="data-box">
+
+        <div>
+            <span>FRAMEWORK</span>
+            <strong>India National AQI</strong>
+        </div>
+
+        <div>
+            <span>REFERENCE</span>
+            <strong>CPCB</strong>
+        </div>
+
+        <div>
+            <span>DATA STATUS</span>
+            <strong>Demonstration Dataset</strong>
+        </div>
+
+    </div>
+     <div class="ai-insight">
+
+    <p class="tagline">AI-ASSISTED INTERPRETATION</p>
+
+    <h3 id="aiTitle">
+        What does the data suggest?
+    </h3>
+
+    <p id="aiText">
+        Based on the demonstration dataset, particulate matter
+        is the main concern. The dashboard can use programmed
+        rules and AI-assisted interpretation to convert complex
+        environmental measurements into understandable information.
+    </p>
+
+    <span class="ai-badge">
+        EDUCATIONAL AI FEATURE
+    </span>
+
+    </div>
+    <div class="references">
+
+    <p class="tagline">KEY REFERENCES</p>
+
+    <a href="https://cpcb.nic.in/" target="_blank">
+        Central Pollution Control Board (CPCB)
+    </a>
+
+    <a href="https://cpcb.nic.in/air-quality-index/" target="_blank">
+        National Air Quality Index — CPCB
+    </a>
+
+    <a href="https://www.who.int/health-topics/air-pollution" target="_blank">
+        World Health Organization — Air Pollution
+    </a>
+
+</div>
+</section>
+
+        <!-- ALERT -->
+        <section class="alert-section">
+
+            <div>
+
+                <p class="tagline">SMART ALERT</p>
+
+                <h2 id="alertTitle">
+                    Air quality requires attention.
+                </h2>
+
+                <p id="alertText">
+                    Digital alerts can help communicate
+                    changes in air quality quickly.
+                </p>
+
+            </div>
+
+            <button onclick="simulateChange()">
+                Simulate Pollution Change
+            </button>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about" class="section about">
+
+            <p class="tagline">ABOUT THE PROJECT</p>
+
+            <h2>AirWise</h2>
+
+            <p>
+                AirWise is an educational prototype developed to
+                demonstrate the role of digital technology in
+                monitoring, analysing and communicating information
+                about air pollution.
+            </p>
+
+            <p class="prototype-note">
+    ⚠ AirWise is an educational prototype. Demonstration
+    values are used to illustrate the workflow of digital
+    air-quality monitoring and should not be interpreted as
+    current official measurements. The prototype does not
+    directly measure air pollution using the user's device.
+           </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <h3>AIRWISE</h3>
+
+        <p>
+            Digital Air Pollution Monitoring & Awareness
+        </p>
+
+        <p>
+            Environmental Studies Project
+        </p>
+
+    </footer>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
