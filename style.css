@@ -515,7 +515,7 @@ footer p {
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 
     .data-section {
         grid-template-columns: 1fr;
@@ -594,7 +594,43 @@ footer p {
 @media (max-width: 700px) {
 
     header {
-        position: relative;
+        position: sticky;
+        gap: 16px;
     }
 
-   
+    .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        color: #17201c;
+        border-radius: 10px;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 7% 16px;
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+
+    nav.is-open {
+        display: flex;
+    }
+
+    nav a {
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}

@@ -4,6 +4,26 @@ function scrollToDashboard() {
     });
 }
 
+const menuButton = document.querySelector(".menu-btn");
+const siteNav = document.getElementById("site-nav");
+
+menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+    menuButton.textContent = isOpen ? "☰" : "×";
+    siteNav.classList.toggle("is-open", !isOpen);
+});
+
+siteNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        siteNav.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
+    });
+});
+
 
 function getAQIStatus(aqi) {
 
